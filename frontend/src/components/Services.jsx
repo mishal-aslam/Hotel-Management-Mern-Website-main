@@ -2,7 +2,7 @@ import React from 'react'
 
 const Services = () => {
   return (
-    <div className='bg-[#232323] my-12'>
+    <div className='bg-[#232323] pb-12'>
       <div className="container relative flex flex-col justify-between h-full w-10/12 px-10 mx-auto xl:px-0 mt-5 ">
     <h2 className="mb-1 text-4xl leading-relaxed font-extrabold   text-white/70 ">Hoteluxe Services</h2>
     <p className="mb-12 text-lg text-white/70">Discover the exceptional services we offer at Hoteluxe to enhance your stay.</p>

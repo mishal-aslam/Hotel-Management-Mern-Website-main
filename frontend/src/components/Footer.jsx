@@ -8,7 +8,7 @@ import {
 
 const Footer = () => {
   return (
-    <div className="bg-[#232323] border-t border-gray-200">
+    <div className="bg-[#232323] border border-gray-200">
       <div className="max-w-screen-lg md:py-10 py-5 px-4 sm:px-6 text-gray-800 sm:flex justify-between mx-auto">
         <div className="p-5 sm:w-2/12 border-r ">
           <div className="text-sm uppercase text-red-600 font-bold">Menu</div>

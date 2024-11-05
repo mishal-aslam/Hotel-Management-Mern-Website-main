@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "../shared/Button";
 import Button2 from "../shared/Button2";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +9,7 @@ function Navbar() {
   return (
     <>
       <div className="bg-[#232323] border-b border-gray-200 ">
-        <nav className="relative px-4  flex justify-between items-center  w-10/12 py-7  mx-auto bg-[#232323]">
+        <nav className="relative px-4 flex justify-between items-center w-10/12 py-7 mx-auto bg-[#232323] h-24">
           <a
             href="#"
             className="relative text-3xl font-extrabold leading-none text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600 transition-all duration-300 transform hover:scale-110 hover:after:w-full animate-pulse tracking-widest after:absolute after:left-0 after:-bottom-1 after:h-1 after:w-0 after:bg-gradient-to-r from-red-500 to-red-600 after:transition-all after:duration-300 after:rounded-lg shadow-lg hover:shadow-red-500/50"
@@ -33,44 +33,44 @@ function Navbar() {
               </svg>
             </button>
           </div>
-          <ul className="hidden lg:flex lg:space-x-12">
-            <li className="relative">
-              <a
-                href="#"
-                className="text-xl font-semibold text-white/70 hover:text-red-500 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-red-500 after:transition-all after:duration-300 hover:after:w-full"
+
+          <ul className="hidden  lg:flex lg:space-x-12 ">
+            <li className="relative pt-3">
+              <Link
+                to="/"
+                className="text-xl font-semibold text-white/70 hover:text-red-500 no-underline after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-red-500 after:transition-all after:duration-300 hover:after:w-full"
               >
-                <Link to="/">Home</Link>
-              </a>
+                Home
+              </Link>
             </li>
-            <li className="relative">
-              <a
-                href="#"
-                className="text-xl font-semibold  text-white/70 hover:text-red-500 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-red-500 after:transition-all after:duration-300 hover:after:w-full"
+            <li className="relative pt-3">
+              <Link
+                to="/bookyourstay"
+                className="text-xl font-semibold text-white/70 hover:text-red-500 no-underline after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-red-500 after:transition-all after:duration-300 hover:after:w-full"
               >
-                 <Link to="/bookyourstay">Book Your Stay</Link>
-        
-              </a>
+                Book Your Stay
+              </Link>
             </li>
-            <li className="relative">
-              <a
-                href="#"
-                className="text-xl font-semibold  text-white/70 hover:text-red-500 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-red-500 after:transition-all after:duration-300 hover:after:w-full"
+            <li className="relative pt-3">
+              <Link
+                to="/about"
+                className="text-xl font-semibold text-white/70 hover:text-red-500 no-underline after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-red-500 after:transition-all after:duration-300 hover:after:w-full"
               >
-              <Link to="/about">About</Link>
-              </a>
+                About
+              </Link>
             </li>
-            <li className="relative">
-              <a
-                href="#"
-                className="text-xl font-semibold  text-white/70 hover:text-red-500 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-red-500 after:transition-all after:duration-300 hover:after:w-full"
+            <li className="relative pt-3">
+              <Link
+                to="/contact"
+                className="text-xl font-semibold text-white/70 hover:text-red-500 no-underline after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-red-500 after:transition-all after:duration-300 hover:after:w-full"
               >
-                <Link to="/contact">Contact</Link>
-              </a>
+                Contact
+              </Link>
             </li>
           </ul>
+
           <div className="hidden lg:flex space-x-4">
             <Button text="Sign In" />
-
             <Button2 text="Register" />
           </div>
         </nav>
@@ -88,12 +88,11 @@ function Navbar() {
           <nav className="fixed top-0 left-0 bottom-0 w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
             <div className="flex items-center mb-8">
               <a href="#" className="mr-auto text-3xl font-bold leading-none">
-                {/* Mobile Logo SVG */}
                 HOTELUXE
               </a>
               <button className="navbar-close" onClick={() => setIsOpen(false)}>
                 <svg
-                  className="h-8 w-8 text-gray-200 cursor-pointer hover:text-red-500 "
+                  className="h-8 w-8 text-gray-200 cursor-pointer hover:text-red-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -108,53 +107,53 @@ function Navbar() {
                 </svg>
               </button>
             </div>
-            <ul className="space-y-3 ">
+            <ul className="space-y-3">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="block w-full py-2 px-6 mb-2 bg-gray-50 hover:bg-gray-100 text-sm text-[#232323] hover:text-red-500 font-bold rounded-xl transition duration-200"
                 >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/bookyourstay"
                   className="block w-full py-2 px-6 mb-2 bg-gray-50 hover:bg-gray-100 text-sm text-[#232323] hover:text-red-500 font-bold rounded-xl transition duration-200"
                 >
                   Book Your Stay
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/about"
                   className="block w-full py-2 px-6 mb-2 bg-gray-50 hover:bg-gray-100 text-sm text-[#232323] hover:text-red-500 font-bold rounded-xl transition duration-200"
                 >
                   About
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/contact"
                   className="block w-full py-2 px-6 mb-2 bg-gray-50 hover:bg-gray-100 text-sm text-[#232323] hover:text-red-500 font-bold rounded-xl transition duration-200"
                 >
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
             <div className="mt-6">
-              <a
-                href="#"
+              <Link
+                to="/signin"
                 className="block w-full py-2 px-6 mb-2 bg-gray-50 hover:bg-gray-100 text-sm text-[#232323] hover:text-red-500 font-bold rounded-xl transition duration-200"
               >
                 Sign In
-              </a>
-              <a
-                href="#"
-                className="block w-full py-2 px-6 bg-red-500 hover:bg-red-600 text-sm  text-white/70 font-bold rounded-xl transition duration-200"
+              </Link>
+              <Link
+                to="/register"
+                className="block w-full py-2 px-6 bg-red-500 hover:bg-red-600 text-sm text-white/70 font-bold rounded-xl transition duration-200"
               >
                 Register
-              </a>
+              </Link>
             </div>
           </nav>
         </div>
