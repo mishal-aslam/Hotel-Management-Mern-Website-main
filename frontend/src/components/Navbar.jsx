@@ -70,8 +70,12 @@ function Navbar() {
           </ul>
 
           <div className="hidden lg:flex space-x-4">
-            <Button text="Sign In" />
-            <Button2 text="Register" />
+            <Link to="/login">
+              <Button text="Sign In" />
+            </Link>
+            <Link to="/register">
+              <Button2 text="Register" />
+            </Link>
           </div>
         </nav>
 

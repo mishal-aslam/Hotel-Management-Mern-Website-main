@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import Button1 from "../shared/Button";
 import Button2 from "../shared/Button2";
 import Modal from "react-bootstrap/Modal";
@@ -10,16 +11,24 @@ const BookYourStay = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [show, setShow] = useState(false);
-  const [currentRoom, setCurrentRoom] = useState(null); // State for the currently selected room
+  const [currentRoom, setCurrentRoom] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [availabilityFilter, setAvailabilityFilter] = useState("All");
+
+  const navigate = useNavigate();
 
   const handleClose = () => {
     setShow(false);
-    setCurrentRoom(null); // Reset current room when closing
+    setCurrentRoom(null);
   };
   
   const handleShow = (room) => {
-    setCurrentRoom(room); // Set the selected room
+    setCurrentRoom(room);
     setShow(true);
+  };
+
+  const handleBookNow = (room) => {
+    navigate("/booking", { state: { room } });
   };
 
   useEffect(() => {
@@ -37,6 +46,16 @@ const BookYourStay = () => {
     fetchData();
   }, []);
 
+  const filteredRooms = rooms.filter((room) => {
+    const matchesName = room.roomName.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesAvailability =
+      availabilityFilter === "All" ||
+      (availabilityFilter === "Available" && room.availablity === "Available") ||
+      (availabilityFilter === "Not Available" && room.availablity !== "Available");
+
+    return matchesName && matchesAvailability;
+  });
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
@@ -44,8 +63,33 @@ const BookYourStay = () => {
     <div className="bg-[#232323] min-h-screen text-white">
       <div className="container mx-auto p-4 md:p-6 lg:p-8 bg-transparent w-11/12">
         <h1 className="text-4xl font-bold mb-8 text-center mt-10">Book Your Stay</h1>
+
+        {/* Search and Filter Section */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+          {/* Search by Room Name */}
+          <input
+            type="text"
+            placeholder="Search by Room Name"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="p-3 w-full sm:w-1/3 bg-[#333333] rounded-lg text-white/80 placeholder-gray-50 border border-transparent focus:outline-none focus:border-none text-start"
+/>
+
+          {/* Availability Dropdown */}
+          <select
+            value={availabilityFilter}
+            onChange={(e) => setAvailabilityFilter(e.target.value)}
+            className="p-3 w-full sm:w-1/3 bg-[#333333] rounded-lg text-white text-start"
+          >
+            <option value="All">All</option>
+            <option value="Available">Available</option>
+            <option value="Not Available">Not Available</option>
+          </select>
+        </div>
+
+        {/* Room Cards */}
         <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-2">
-          {rooms.map((room) => (
+          {filteredRooms.map((room) => (
             <div
               key={room.roomName}
               className="bg-[#333333] mt-12 shadow-lg rounded-lg overflow-hidden w-full sm:w-[500px] md:w-[600px] mx-auto"
@@ -87,7 +131,7 @@ const BookYourStay = () => {
                     </p>
                   </div>
                   <div className="flex gap-4 mt-4 sm:mt-0 md:-ml-48">
-                    <Button1 text="Book Now" />
+                    <Button1 text="Book Now" onClick={() => handleBookNow(room)} />
                     <Button2 text="View Details" onClick={() => handleShow(room)} />
                   </div>
                 </div>
